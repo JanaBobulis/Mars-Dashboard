@@ -85,7 +85,7 @@ const renderRoverData = (state) => {
 
 const getRoverData = (state) => {
     let { roverData } = state
-    fetch(`http://localhost:3001/rover/curiosity`)
+    fetch(`http://localhost:3000/rover/curiosity`)
     .then(res => res.json())
     .then((roverData) => {
         console.log(roverData);
