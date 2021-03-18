@@ -1,5 +1,5 @@
 let store = Immutable.Map({
-    project: Immutable.Map{ name: "Mars Dashboard" },
+    project: Immutable.Map({ name: "Mars Dashboard" }),
     apod: '',
     rovers: ['Curiosity'],
     roverInfo: []
