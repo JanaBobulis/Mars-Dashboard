@@ -1,9 +1,9 @@
-let store = {
-    project: { name: "Mars Dashboard" },
+let store = Immutable.Map({
+    project: Immutable.Map({ name: "Mars Dashboard" }),
     apod: '',
     rovers: ['Curiosity'],
     roverInfo: []
-}
+})
 
 // add our markup to the page
 const root = document.getElementById('root')
