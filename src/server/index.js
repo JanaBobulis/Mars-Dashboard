@@ -5,6 +5,7 @@ const fetch = require('node-fetch')
 const path = require('path')
 
 const app = express()
+const router = express.Router()
 const port = 3000
 
 app.use(bodyParser.urlencoded({ extended: false }))
