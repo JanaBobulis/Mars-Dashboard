@@ -14,12 +14,13 @@ const updateStore = (store, newState) => {
 }
 
 const render = async (root, state) => {
-    root.innerHTML = App(state, renderRoverData)
+    root.innerHTML = renderRoverData(state)
 }
 
 
 // create content 
 const App = (state, renderRoverData) => {
+    console.log(state)
     let { rovers } = state;
     let roverInfo = state.get('roverInfo');
 
@@ -44,7 +45,7 @@ const App = (state, renderRoverData) => {
 
 // listening for load event because page should load before any JS is called
 window.addEventListener('load', () => {
-    render(root, store)
+    getRoverData()
 })
 
 
@@ -83,12 +84,12 @@ const renderRoverData = (state) => {
 }
 
 
-const getRoverData = (state) => {
-    let { roverData } = state
+const getRoverData = () => {
     fetch(`http://localhost:3000/rover/curiosity`)
     .then(res => res.json())
     .then((roverData) => {
-        console.log(roverData);
-        updateStore(store, { roverData })
+        let photo_manifest = roverData.photo_manifest
+        updateStore(store, {photo_manifest});
+        render(root, store);
     })
 }
