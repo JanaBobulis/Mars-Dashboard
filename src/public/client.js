@@ -38,10 +38,19 @@ const renderRoverData = (state) => {
     console.log(roverData, 'roverData');
     return (
     `
-    <p>${roverData.landing_date}</p>
-        <p>${roverData.name}</p>
+    <header></header>
+    <main>
+        <h1>${Greeting(store.get('project').get('name'))}</h1>
+        <nav>
+            ${navMenu()}
+        </nav> 
+        <div id="roverInfo">
+            <p>Landing date: ${roverData.landing_date}</p>
+            <p>Launch date: ${roverData.launch_date}</p>
+            <p>Status: ${roverData.status}</p>
+        </div>
+        </main>
     `
-        
     )       
 }
 
