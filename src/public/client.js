@@ -1,8 +1,6 @@
 let store = Immutable.Map({
     project: Immutable.Map({ name: "Mars Dashboard" }),
-    apod: '',
-    rovers: ['Curiosity'],
-    roverInfo: []
+    rovers: ['Curiosity', 'Opportunity', 'Spirit'],
 })
 
 // add our markup to the page
