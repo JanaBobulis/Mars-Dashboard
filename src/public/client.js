@@ -20,6 +20,16 @@ window.addEventListener('load', () => {
     getRoverData()
 })
 
+const navMenu = () => {
+    const navArray = store.get('rovers');
+    return navArray.map(element => {
+        return `<div class = rover>
+        <button id="${element}" href=# onclick="buttonClick()">${element}</button>
+        </div>
+        `
+    }).join(' ');//concatenating all of the elements in an array with space between and no coma
+}
+
 
 const Greeting = (name) => {
     if (name) {
@@ -54,8 +64,8 @@ const renderRoverData = (state) => {
     )       
 }
 
-const getRoverData = () => {
-    fetch(`http://localhost:3000/rover/curiosity`)
+const getRoverData = () => { //'name' as an argument
+    fetch(`http://localhost:3000/rover/curiosity`) //${name} instead of curiosity
     .then(res => res.json())
     .then((roverData) => {
         let photo_manifest = roverData.photo_manifest
