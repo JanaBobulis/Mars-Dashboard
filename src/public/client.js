@@ -75,8 +75,8 @@ function roverButton() {
 }
 }
 
-const getRoverData = () => { //'name' as an argument
-    fetch(`http://localhost:3000/rover/curiosity`) //${name} instead of curiosity
+const getRoverData = (roverName) => { 
+    fetch(`http://localhost:3000/rover/${roverName}`)
     .then(res => res.json())
     .then((roverData) => {
         let photo_manifest = roverData.photo_manifest
