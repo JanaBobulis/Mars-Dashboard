@@ -18,7 +18,7 @@ const render = async (root, state) => {
 
 // listening for load event because page should load before any JS is called
 window.addEventListener('load', () => {
-    getRoverData('Spirit)
+    getRoverData('Spirit')
     getRoverData('Opportunity')
     getRoverData('Curiosity')
                  
