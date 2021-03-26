@@ -59,6 +59,7 @@ const renderRoverData = (state) => {
             ${navMenu()}
         </nav> 
         <div id="roverInfo" style = "display: none">
+            <p>Name: ${roverData.name}</p>
             <p>Landing date: ${roverData.landing_date}</p>
             <p>Launch date: ${roverData.launch_date}</p>
             <p>Status: ${roverData.status}</p>
