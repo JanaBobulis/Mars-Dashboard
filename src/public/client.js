@@ -1,6 +1,7 @@
 let store = Immutable.Map({
     project: Immutable.Map({ name: "Mars Dashboard" }),
     rovers: ['Curiosity', 'Opportunity', 'Spirit'],
+    roverName: ''
 })
 
 // add our markup to the page
@@ -17,7 +18,10 @@ const render = async (root, state) => {
 
 // listening for load event because page should load before any JS is called
 window.addEventListener('load', () => {
-    getRoverData()
+    getRoverData('Spirit)
+    getRoverData('Opportunity')
+    getRoverData('Curiosity')
+                 
 })
 
 const navMenu = () => {
