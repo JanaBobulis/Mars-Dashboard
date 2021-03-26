@@ -58,7 +58,7 @@ const renderRoverData = (state) => {
         <nav>
             ${navMenu()}
         </nav> 
-        <div id="roverInfo">
+        <div id="roverInfo" style = "display: none">
             <p>Landing date: ${roverData.landing_date}</p>
             <p>Launch date: ${roverData.launch_date}</p>
             <p>Status: ${roverData.status}</p>
@@ -66,6 +66,13 @@ const renderRoverData = (state) => {
         </main>
     `
     )       
+}
+
+function roverButton() {
+    let element = document.getElementById('roverInfo');
+    if(element.style.display = 'none') {
+        element.style.display = 'block')
+}
 }
 
 const getRoverData = () => { //'name' as an argument
