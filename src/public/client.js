@@ -71,6 +71,7 @@ const renderRoverData = (state) => {
 
 function roverButton() {
     let element = document.getElementById('roverInfo');
+    console.log(element)
     if(element.style.display = 'none') {
         element.style.display = 'block'
 }
