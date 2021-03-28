@@ -47,9 +47,20 @@ const Greeting = (name) => {
     `
 }
 
-const renderRoverData = (state) => {
+const renderRoverInfo = (state) => {
     const roverData = state.photo_manifest;
-    console.log(roverData, 'roverData');
+    let roverDetails = ` 
+        <div id="roverInfo" style="display: none">
+        <p>Name: ${roverData.name}</p>
+        <p>Landing date: ${roverData.landing_date}</p>
+        <p>Launch date: ${roverData.launch_date}</p>
+        <p>Status: ${roverData.status}</p>
+    </div>
+        `
+        return roverDetails;
+}
+
+const renderRoverData = (state) => {
     return (
     `
     <header></header>
@@ -58,12 +69,10 @@ const renderRoverData = (state) => {
         <nav>
             ${navMenu()}
         </nav> 
-        <div id="roverInfo" style = "display: none">
-            <p>Name: ${roverData.name}</p>
-            <p>Landing date: ${roverData.landing_date}</p>
-            <p>Launch date: ${roverData.launch_date}</p>
-            <p>Status: ${roverData.status}</p>
+        <div>
+            ${renderRoverInfo(state)}
         </div>
+        
         </main>
     `
     )       
