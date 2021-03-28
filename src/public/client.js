@@ -14,6 +14,7 @@ const updateStore = (store, newState) => {
 
 const render = async (root, state) => {
     root.innerHTML = renderRoverData(state)
+    root.innerHTML = renderRoverInfo(state)
 }
 
 // listening for load event because page should load before any JS is called
