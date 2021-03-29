@@ -94,7 +94,9 @@ const getRoverData = (roverName) => {
     .then(res => res.json())
     .then((roverData) => {
         let photo_manifest = roverData.photo_manifest
-        updateStore(store, {photo_manifest});
+        //let latest_photos = roverData.latest_photos
+        //console.log(latest_photos) - shows "undefined"
+        updateStore(store, roverData);
         render(root, store);
     })
 }
