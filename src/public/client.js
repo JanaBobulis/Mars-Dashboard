@@ -61,6 +61,16 @@ const renderRoverInfo = (state) => {
         return roverDetails;
 }
 
+const getRoverImage = (state) => {
+    const roverData = state.latest_photos;
+    const sliceRoverData = roverData.slice(0, 6)
+    return sliceRoverData.map(e => {
+        return(`
+            <img src="${e.img_src}" style="width: 100%; height: auto" alt="Mars location"></img>
+`)
+    }).join(' ')
+}
+
 const renderRoverData = (state) => {
     return (
     `
@@ -73,7 +83,9 @@ const renderRoverData = (state) => {
         <div>
             ${renderRoverInfo(state)}
         </div>
-        
+        <div id='roverPhotos'>
+            ${getRoverImage(state)}
+        </div>
         </main>
     `
     )       
@@ -81,7 +93,6 @@ const renderRoverData = (state) => {
 
 function roverButton(button) {
     let element = document.getElementById('roverInfo');
-    console.log(element)
     if(element.style.display = 'none') {
         element.style.display = 'block'
     }
