@@ -51,12 +51,13 @@ const Greeting = (name) => {
 const renderRoverInfo = (state) => {
     const roverData = state.photo_manifest;
     let roverDetails = ` 
-        <div id="roverInfo" style="display: none">
-        <p>Name: ${roverData.name}</p>
-        <p>Landing date: ${roverData.landing_date}</p>
-        <p>Launch date: ${roverData.launch_date}</p>
-        <p>Status: ${roverData.status}</p>
-    </div>
+        <div id="roverInfo" style=display:none>
+            <p><b>Name:</b> ${roverData[0].rover.name}</p>
+            <p><b>Launch date:</b> ${roverData[0].rover.launch_date}
+            <p><b>Landing date:</b> ${roverData[0].rover.landing_date}</p>
+            <p><b>Status:</b> ${roverData[0].rover.status}
+            <p><b>Most recent photos taken on:</b> ${roverData.slice(-1).pop().earth_date}</p>
+        </div>
         `
         return roverDetails;
 }
