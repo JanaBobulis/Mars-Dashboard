@@ -81,7 +81,7 @@ const renderRoverData = (state) => {
         <nav>
             ${navMenu()}
         </nav> 
-        <div>
+        <div id='roverDetails'>
             ${renderRoverInfo(state)}
         </div>
         <div id='roverPhotos'>
