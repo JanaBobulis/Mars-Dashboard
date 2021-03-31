@@ -93,10 +93,8 @@ const getRoverData = (roverName) => {
     fetch(`http://localhost:3000/rover/${roverName}`)
     .then(res => res.json())
     .then((roverData) => {
-        let photo_manifest = roverData.photo_manifest
-        //let latest_photos = roverData.latest_photos
-        //console.log(latest_photos) - shows "undefined"
-        updateStore(store, roverData);
+        let latest_photos = roverData.latest_photos
+        updateStore(store, {latest_photos});
         render(root, store);
     })
 }
