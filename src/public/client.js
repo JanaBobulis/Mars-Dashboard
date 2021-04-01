@@ -110,7 +110,7 @@ function roverButton(button) {
 
 
 const getRoverData = (roverName) => { 
-    fetch(`http://localhost:3005/rover/${roverName}`)
+    fetch(`http://localhost:3000/rover/${roverName}`)
     .then(res => res.json())
     .then((roverData) => {
         let latest_photos = roverData.latest_photos
