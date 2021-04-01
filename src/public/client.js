@@ -49,7 +49,7 @@ const Greeting = (name) => {
 const renderRoverInfo = (state) => {
     const roverData = state.latest_photos;
     let roverDetails = ` 
-        <div id="roverInfo">
+        <div id="roverInfo" style="display:none">
         <p><b>Name:</b> ${roverData[0].rover.name}</p>
         <p><b>Launch date:</b> ${roverData[0].rover.launch_date}
         <p><b>Landing date:</b> ${roverData[0].rover.landing_date}</p>
@@ -100,8 +100,9 @@ const renderRoverData = (state) => {
 
 function roverButton(button) {
     let element = document.getElementById('roverInfo');
-
-    
+    if(element.style.display = 'none') {
+        element.style.display = 'block'
+    }
     let selectedRover = button.id;
     console.log(selectedRover)
     getRoverData(selectedRover)    
