@@ -48,7 +48,7 @@ const Greeting = (name) => {
 }
 const renderRoverInfo = (state) => {
     const roverData = state.latest_photos;
-    let roverDetails = ` 
+    const roverDetails = ` 
         <div id="roverInfo" style="display:none">
         <p><b>Name:</b> ${roverData[0].rover.name}</p>
         <p><b>Launch date:</b> ${roverData[0].rover.launch_date}
@@ -103,7 +103,7 @@ function roverButton(button) {
     if(element.style.display = "none") {
         element.style.display = "block"
     }
-    let selectedRover = button.id;
+    const selectedRover = button.id;
     console.log(selectedRover)
     getRoverData(selectedRover)    
 }
@@ -113,9 +113,7 @@ const getRoverData = (roverName) => {
     fetch(`http://localhost:3000/rover/${roverName}`)
     .then(res => res.json())
     .then((roverData) => {
-        let latest_photos = roverData.latest_photos
-        let photos = roverData.photos;
-        console.log(latest_photos) //shows "undefined"
+        const latest_photos = roverData.latest_photos
         updateStore(store, {latest_photos});
         render(root, store)
     })
