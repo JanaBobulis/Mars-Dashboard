@@ -24,7 +24,7 @@ window.addEventListener("load", () => {
     getRoverData("Curiosity")
 });
 
-
+//dynamic navigation menu(Higher order function)
 const navMenu = () => {
     const navArray = () => store.get("rovers");
     return navArray().map(element => {
@@ -47,6 +47,7 @@ const Greeting = (name) => {
     `
 };
 
+//rover data
 const renderRoverInfo = (state) => {
     const roverData = state.latest_photos;
     const roverDetails = ` 
@@ -78,6 +79,7 @@ const renderRoverInfo = (state) => {
   return roverDetails;
 };
 
+//get up to 4 rover images(Higher Order function)
 const getRoverImage = (state) => {
     const roverData = () => state.latest_photos;
     console.log(roverData.length);
@@ -92,6 +94,7 @@ const getRoverImage = (state) => {
         }).join(" ")
     };
 
+//display data
 const renderRoverData = (state) => {
     return (
     `
@@ -135,6 +138,7 @@ const roverFact = (state) => {
     }
 };
 
+//buttons
 function roverButton(button) {
     const selectedRover = button.id;
     getRoverData(selectedRover, true)    
