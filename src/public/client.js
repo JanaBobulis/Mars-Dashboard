@@ -103,6 +103,7 @@ const renderRoverData = (state) => {
         </nav> 
         <div id="content" style="display:none">
         <div id="roverDetails">
+            ${roverFact(state)}
             ${renderRoverInfo(state)}
         </div>
         <div id="roverPhotos">
@@ -114,13 +115,31 @@ const renderRoverData = (state) => {
     )       
     }
 
-
+//fact depending on the rover
+const roverFact = (state) => {
+    const roverData = state.latest_photos;
+    if (roverData[0].rover.name == "Curiosity") {
+        return `
+        <p id='fact'>Part of NASA's Mars Science Laboratory mission, Curiosity is the largest and most capable rover ever sent to Mars. Curiosity explores Gale Crater and acquires rock, soil, and air samples for onboard analysis. The car-size rover is about as tall as a basketball player and uses a 7 foot-long arm to place tools close to rocks selected for study. Curiosity's large size allows it to carry an advanced kit of 10 science instruments. It has tools including 17 cameras, a laser to vaporize and study small pinpoint spots of rocks at a distance, and a drill to collect powdered rock samples. It hunts for special rocks that formed in water and/or have signs of organics.</p>
+        `;
+    } else if (roverData[0].rover.name == "Spirit") {
+        return `
+        <p id='fact'>One of two rovers launched in 2003 to explore Mars and search for signs of past life, Spirit far outlasted her planned 90-day mission. Among her myriad discoveries, Spirit found evidence that Mars was once much wetter than it is today and helped scientists better understand the Martian wind.
+        In May 2009, the rover became embedded in soft soil at a site called "Troy" with only five working wheels to aid in the rescue effort. After months of testing and carefully planned maneuvers, NASA ended efforts to free the rover and eventually ended the mission on May 25, 2011.</p>
+        `;
+    } else if (roverData[0].rover.name == "Opportunity") {
+        return `
+        <p id='fact'>Opportunity was the second of the two rovers(twin rover of Spirit) launched in 2003 to land on Mars and begin traversing the Red Planet in search of signs of past life. The rover is still actively exploring the Martian terrain, having far outlasted her planned 90-day mission.
+        Since landing on Mars in 2004, Opportunity has made a number of discoveries about the Red Planet including dramatic evidence that long ago at least one area of Mars stayed wet for an extended period and that conditions could have been suitable for sustaining microbial life.
+        The Opportunity rover stopped communicating with Earth when a severe Mars-wide dust storm blanketed its location in June 2018. After more than a thousand commands to restore contact, engineers in the Space Flight Operations Facility at NASA's Jet Propulsion Laboratory (JPL) made their last attempt to revive Opportunity Tuesday, February 13, 2019, to no avail. The solar-powered rover's final communication was received June 10.</p>
+        `;
+    }
+};
 
 function roverButton(button) {
     const selectedRover = button.id;
     getRoverData(selectedRover, true)    
 }
-
 
 const getRoverData = (roverName, show) => { 
     fetch(`http://localhost:3000/rover/${roverName}`)
