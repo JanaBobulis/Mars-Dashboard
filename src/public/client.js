@@ -49,15 +49,32 @@ const Greeting = (name) => {
 const renderRoverInfo = (state) => {
     const roverData = state.latest_photos;
     const roverDetails = ` 
-        <div id="roverInfo" style="display:none">
-        <p><b>Name:</b> ${roverData[0].rover.name}</p>
-        <p><b>Launch date:</b> ${roverData[0].rover.launch_date}
-        <p><b>Landing date:</b> ${roverData[0].rover.landing_date}</p>
-        <p><b>Status:</b> ${roverData[0].rover.status}
-        <p><b>Most recent photos taken on:</b> ${roverData.slice(-1).pop().earth_date}</p>
+<div id="roverInfo">
+        <table>
+            <tr>
+                <th>Name</th>
+                <td>${roverData[0].rover.name}</td>
+            </tr>
+            <tr>
+                <th>Launch date</th>
+                <td>${roverData[0].rover.launch_date}</td>
+            </tr>
+            <tr>
+                <th>Landing date</th>
+                <td>${roverData[0].rover.landing_date}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>${roverData[0].rover.status}</td>
+            </tr>
+            <tr>
+                <th>Most recent photos taken on</th>
+                <td>${roverData.slice(-1).pop().earth_date}</td>
+            </tr>
+        </table>
     </div>
         `
-        return roverDetails;
+  return roverDetails;
 }
 
 const getRoverImage = (state) => {
