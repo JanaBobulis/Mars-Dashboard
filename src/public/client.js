@@ -29,7 +29,7 @@ const navMenu = () => {
     const navArray = () => store.get("rovers");
     return navArray().map(element => {
         return `<div class = rover>
-        <button type="button" id="${element}" href=${element} onclick="roverButton(${element})"><img id="${element}-img"><h2>${element}</h2></button>
+        <button type="button" id="${element.toLowerCase()}" href=${element} onclick="roverButton(${element.toLowerCase()})"><img id="${element.toLowerCase()}-img"><h2>${element}</h2></button>
         </div>
         `
     }).join(" ");//concatenating all of the elements in an array with space between and no coma
@@ -85,10 +85,10 @@ const getRoverImage = (state) => {
             console.log(e.img_src)
             return(`
             <div id="img-container">
-                <img src="${e.img_src}"></img>
+                <img src="${e.img_src}" id="${e.rover.name.toLowerCase()}"></img>
             </div>
             `)
-        }).join(' ')
+        }).join(" ")
     }
 
 
@@ -142,7 +142,7 @@ function roverButton(button) {
 }
 
 const getRoverData = (roverName, show) => { 
-    fetch(`http://localhost:3000/rover/${roverName}`)
+    fetch(`http://localhost:3000/rover/${roverName.toLowerCase()}`)
     .then(res => res.json())
     .then((roverData) => {
         const latest_photos = roverData.latest_photos
