@@ -2,27 +2,27 @@ let store = Immutable.Map({
     project: Immutable.Map({ name: "Mars Dashboard" }),
     rovers: ["Curiosity", "Opportunity", "Spirit"],
     roverName: "",
-})
+});
 
 // add our markup to the page
-const root = document.getElementById("root")
+const root = document.getElementById("root");
 
 const updateStore = (store, newState) => {
     store = Object.assign(store, newState)
     render(root, store)
-}
+};
 
 const render = async (root, state) => {
     root.innerHTML = renderRoverInfo(state)
     root.innerHTML = renderRoverData(state)
-}
+};
 
 // listening for load event because page should load before any JS is called
 window.addEventListener("load", () => {
     getRoverData("Spirit")
     getRoverData("Opportunity")
     getRoverData("Curiosity")
-})
+});
 
 
 const navMenu = () => {
@@ -33,7 +33,7 @@ const navMenu = () => {
         </div>
         `
     }).join(" ");//concatenating all of the elements in an array with space between and no coma
-}
+};
 
 const Greeting = (name) => {
     if (name) {
@@ -45,37 +45,38 @@ const Greeting = (name) => {
     return `
         <h1>Hello!</h1>
     `
-}
+};
+
 const renderRoverInfo = (state) => {
     const roverData = state.latest_photos;
     const roverDetails = ` 
-<div id="roverInfo">
-        <table>
-            <tr>
-                <th>Name</th>
-                <td>${roverData[0].rover.name}</td>
-            </tr>
-            <tr>
-                <th>Launch date</th>
-                <td>${roverData[0].rover.launch_date}</td>
-            </tr>
-            <tr>
-                <th>Landing date</th>
-                <td>${roverData[0].rover.landing_date}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>${roverData[0].rover.status}</td>
-            </tr>
-            <tr>
-                <th>Most recent photos taken on</th>
-                <td>${roverData.slice(-1).pop().earth_date}</td>
-            </tr>
-        </table>
-    </div>
-        `
+    <div id="roverInfo">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td>${roverData[0].rover.name}</td>
+                </tr>
+                <tr>
+                    <th>Launch date</th>
+                    <td>${roverData[0].rover.launch_date}</td>
+                </tr>
+                <tr>
+                    <th>Landing date</th>
+                    <td>${roverData[0].rover.landing_date}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>${roverData[0].rover.status}</td>
+                </tr>
+                <tr>
+                    <th>Most recent photos taken on</th>
+                    <td>${roverData.slice(-1).pop().earth_date}</td>
+                </tr>
+            </table>
+        </div>
+        `;
   return roverDetails;
-}
+};
 
 const getRoverImage = (state) => {
     const roverData = () => state.latest_photos;
@@ -85,13 +86,11 @@ const getRoverImage = (state) => {
             console.log(e.img_src)
             return(`
             <div id="img-container">
-                <img src="${e.img_src}" id="${e.rover.name.toLowerCase()}"></img>
+                <img src="${e.img_src}" id="${e.rover.name.toLowerCase()}-img"></img>
             </div>
             `)
         }).join(" ")
-    }
-
-
+    };
 
 const renderRoverData = (state) => {
     return (
@@ -112,8 +111,8 @@ const renderRoverData = (state) => {
     </div>
    </main>
     `
-    )       
-    }
+    );       
+ };
 
 //fact depending on the rover
 const roverFact = (state) => {
@@ -139,7 +138,7 @@ const roverFact = (state) => {
 function roverButton(button) {
     const selectedRover = button.id;
     getRoverData(selectedRover, true)    
-}
+};
 
 const getRoverData = (roverName, show) => { 
     fetch(`http://localhost:3000/rover/${roverName.toLowerCase()}`)
@@ -151,5 +150,5 @@ const getRoverData = (roverName, show) => {
         if (show) {
             document.getElementById("content").style.display = "grid";
     })
-}
+};
 
