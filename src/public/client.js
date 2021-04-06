@@ -1,11 +1,11 @@
 let store = Immutable.Map({
     project: Immutable.Map({ name: "Mars Dashboard" }),
-    rovers: ['Curiosity', 'Opportunity', 'Spirit'],
-    roverName: '',
+    rovers: ["Curiosity", "Opportunity", "Spirit"],
+    roverName: "",
 })
 
 // add our markup to the page
-const root = document.getElementById('root')
+const root = document.getElementById("root")
 
 const updateStore = (store, newState) => {
     store = Object.assign(store, newState)
@@ -18,21 +18,21 @@ const render = async (root, state) => {
 }
 
 // listening for load event because page should load before any JS is called
-window.addEventListener('load', () => {
-    getRoverData('Spirit')
-    getRoverData('Opportunity')
-    getRoverData('Curiosity')
+window.addEventListener("load", () => {
+    getRoverData("Spirit")
+    getRoverData("Opportunity")
+    getRoverData("Curiosity")
 })
 
 
 const navMenu = () => {
-    const navArray = store.get('rovers');
+    const navArray = store.get("rovers");
     return navArray.map(element => {
         return `<div class = rover>
         <button type="button" id="${element}" href=${element} onclick="roverButton(${element})">${element}</button>
         </div>
         `
-    }).join(' ');//concatenating all of the elements in an array with space between and no coma
+    }).join(" ");//concatenating all of the elements in an array with space between and no coma
 }
 
 const Greeting = (name) => {
@@ -67,7 +67,7 @@ const getRoverImage = (state) => {
         return roverDataSlice.map (e => {
             console.log(e.img_src)
             return(`
-            <div id='img-container'>
+            <div id="img-container">
                 <img src="${e.img_src}"></img>
             </div>
             `)
@@ -81,14 +81,14 @@ const renderRoverData = (state) => {
     `
     <header></header>
     <main>
-            ${Greeting(store.get('project').get('name'))}
+            ${Greeting(store.get("project").get("name"))}
         <nav>
             ${navMenu()}
         </nav> 
-        <div id='roverDetails'>
+        <div id="roverDetails">
             ${renderRoverInfo(state)}
         </div>
-        <div id='roverPhotos'>
+        <div id="roverPhotos">
             ${getRoverImage(state)}
         </div>
         </main>
@@ -99,9 +99,9 @@ const renderRoverData = (state) => {
 
 
 function roverButton(button) {
-    let element = document.getElementById('roverInfo');
-    if(element.style.display = 'none') {
-        element.style.display = 'block'
+    let element = document.getElementById("roverInfo");
+    if(element.style.display = "none") {
+        element.style.display = "block"
     }
     let selectedRover = button.id;
     console.log(selectedRover)
