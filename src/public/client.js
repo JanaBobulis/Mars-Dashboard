@@ -29,7 +29,7 @@ const navMenu = () => {
     const navArray = () => store.get("rovers");
     return navArray().map(element => {
         return `<div class = rover>
-        <button type="button" id="${element}" href=${element} onclick="roverButton(${element})">${element}</button>
+        <button type="button" id="${element}" href=${element} onclick="roverButton(${element})"><img id="${element}-img"><h2>${element}</h2></button>
         </div>
         `
     }).join(" ");//concatenating all of the elements in an array with space between and no coma
