@@ -26,8 +26,8 @@ window.addEventListener("load", () => {
 
 
 const navMenu = () => {
-    const navArray = store.get("rovers");
-    return navArray.map(element => {
+    const navArray = () => store.get("rovers");
+    return navArray().map(element => {
         return `<div class = rover>
         <button type="button" id="${element}" href=${element} onclick="roverButton(${element})">${element}</button>
         </div>
@@ -61,9 +61,9 @@ const renderRoverInfo = (state) => {
 }
 
 const getRoverImage = (state) => {
-    const roverData = state.latest_photos;
+    const roverData = () => state.latest_photos;
     console.log(roverData.length);
-        const roverDataSlice = roverData.slice(0, 4)
+        const roverDataSlice = roverData().slice(0, 4)
         return roverDataSlice.map (e => {
             console.log(e.img_src)
             return(`
