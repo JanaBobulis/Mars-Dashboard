@@ -96,19 +96,20 @@ const getRoverImage = (state) => {
 const renderRoverData = (state) => {
     return (
     `
-    <header></header>
     <main>
-            ${Greeting(store.get("project").get("name"))}
+        ${Greeting(store.get("project").get("name"))}
         <nav>
             ${navMenu()}
         </nav> 
+        <div id="content" style="display:none">
         <div id="roverDetails">
             ${renderRoverInfo(state)}
         </div>
         <div id="roverPhotos">
             ${getRoverImage(state)}
         </div>
-        </main>
+    </div>
+   </main>
     `
     )       
     }
@@ -116,23 +117,20 @@ const renderRoverData = (state) => {
 
 
 function roverButton(button) {
-    let element = document.getElementById("roverInfo");
-    if(element.style.display = "none") {
-        element.style.display = "block"
-    }
     const selectedRover = button.id;
-    console.log(selectedRover)
-    getRoverData(selectedRover)    
+    getRoverData(selectedRover, true)    
 }
 
 
-const getRoverData = (roverName) => { 
+const getRoverData = (roverName, show) => { 
     fetch(`http://localhost:3000/rover/${roverName}`)
     .then(res => res.json())
     .then((roverData) => {
         const latest_photos = roverData.latest_photos
         updateStore(store, {latest_photos});
         render(root, store)
+        if (show) {
+            document.getElementById("content").style.display = "grid";
     })
 }
 
