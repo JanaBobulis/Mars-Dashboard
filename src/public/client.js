@@ -15,13 +15,6 @@ const updateStore = (store, newState) => {
 const render = async (root, state) => {
     root.innerHTML = renderRoverInfo(state);
     root.innerHTML = renderRoverData(state);
-    store = Object.assign(store, newState)
-    render(root, store)
-};
-
-const render = async (root, state) => {
-    root.innerHTML = renderRoverInfo(state)
-    root.innerHTML = renderRoverData(state)
 };
 
 // listening for load event because page should load before any JS is called
@@ -29,9 +22,6 @@ window.addEventListener("load", () => {
     getRoverData("Spirit");
     getRoverData("Opportunity");
     getRoverData("Curiosity");
-    getRoverData("Spirit")
-    getRoverData("Opportunity")
-    getRoverData("Curiosity")
 });
 
 //dynamic navigation menu(Higher order function)
@@ -39,9 +29,9 @@ const navMenu = () => {
     const navArray = () => store.get("rovers");
     return navArray().map(element => {
         return `<div class = rover>
-        <button type="button" id="${element.toLowerCase()}" href=${element} onclick="roverButton(${element.toLowerCase()})"><img id="${element.toLowerCase()}-img"><h2>${element}</h2></button>
+        <button type="button" id="${element.toLowerCase()}" href=${element} onclick="roverButton(${element.toLowerCase()})"><img id='${element.toLowerCase()}-img'><h2>${element}</h2></img></button>
         </div>
-        `
+        `;
     }).join(" ");//concatenating all of the elements in an array with space between and no coma
 };
 
@@ -108,7 +98,7 @@ const renderRoverData = (state) => {
         ${Greeting(store.get("project").get("name"))}
         <nav>
             ${navMenu()}
-        </nav> 
+        </nav>
         <div id="content" style="display:none">
         <div id="roverDetails">
             ${roverFact(state)}
@@ -119,8 +109,7 @@ const renderRoverData = (state) => {
         </div>
     </div>
    </main>
-    `
-    );       
+    `);       
  };
 
 //fact depending on the rover
@@ -144,22 +133,21 @@ const roverFact = (state) => {
     }
 };
 
-//buttons
+//button
 function roverButton(button) {
     const selectedRover = button.id;
-    getRoverData(selectedRover, true)    
-};
-
-const getRoverData = (roverName, show) => { 
-    fetch(`http://localhost:3000/rover/${roverName.toLowerCase()}`)
-    .then(res => res.json())
-    .then((roverData) => {
-        const latest_photos = roverData.latest_photos
-        updateStore(store, {latest_photos});
-        render(root, store)
-        if (show) {
-            document.getElementById("content").style.display = "grid";
-    }
-})
+    getRoverData(selectedRover, true);
 }
 
+const getRoverData = (roverName, show) => {
+    fetch(`http://localhost:3005/rover/${roverName.toLowerCase()}`)
+        .then(res => res.json())
+        .then((roverData) => {
+            const latest_photos = roverData.latest_photos;
+            updateStore(store, { latest_photos });
+            render(root, store);
+            if (show) {
+                document.getElementById("content").style.display = "grid";
+            }
+        });
+};
