@@ -8,7 +8,6 @@ let store = Immutable.Map({
 const root = document.getElementById("root");
 
 const updateStore = (store, newState) => {
-<<<<<<< HEAD
     store = Object.assign(store, newState);
     render(root, store);
 };
@@ -16,7 +15,6 @@ const updateStore = (store, newState) => {
 const render = async (root, state) => {
     root.innerHTML = renderRoverInfo(state);
     root.innerHTML = renderRoverData(state);
-=======
     store = Object.assign(store, newState)
     render(root, store)
 };
@@ -24,20 +22,16 @@ const render = async (root, state) => {
 const render = async (root, state) => {
     root.innerHTML = renderRoverInfo(state)
     root.innerHTML = renderRoverData(state)
->>>>>>> 6750830f010584414d7d03b28999f572aeb558b6
 };
 
 // listening for load event because page should load before any JS is called
 window.addEventListener("load", () => {
-<<<<<<< HEAD
     getRoverData("Spirit");
     getRoverData("Opportunity");
     getRoverData("Curiosity");
-=======
     getRoverData("Spirit")
     getRoverData("Opportunity")
     getRoverData("Curiosity")
->>>>>>> 6750830f010584414d7d03b28999f572aeb558b6
 });
 
 //dynamic navigation menu(Higher order function)
@@ -45,15 +39,9 @@ const navMenu = () => {
     const navArray = () => store.get("rovers");
     return navArray().map(element => {
         return `<div class = rover>
-<<<<<<< HEAD
-        <button type="button" id="${element.toLowerCase()}" href=${element} onclick="roverButton(${element.toLowerCase()})"><img id='${element.toLowerCase()}-img'><h2>${element}</h2></img></button>
-        </div>
-        `;
-=======
         <button type="button" id="${element.toLowerCase()}" href=${element} onclick="roverButton(${element.toLowerCase()})"><img id="${element.toLowerCase()}-img"><h2>${element}</h2></button>
         </div>
         `
->>>>>>> 6750830f010584414d7d03b28999f572aeb558b6
     }).join(" ");//concatenating all of the elements in an array with space between and no coma
 };
 
@@ -65,11 +53,7 @@ const Greeting = (name) => {
     }
     return `
         <h1>Hello!</h1>
-<<<<<<< HEAD
     `;
-=======
-    `
->>>>>>> 6750830f010584414d7d03b28999f572aeb558b6
 };
 
 //rover data
@@ -77,7 +61,6 @@ const renderRoverInfo = (state) => {
     const roverData = state.latest_photos;
     const roverDetails = ` 
     <div id="roverInfo">
-<<<<<<< HEAD
         <table>
             <tr>
                 <th>Name</th>
@@ -121,73 +104,11 @@ const getRoverImage = (state) => {
 //display data
 const renderRoverData = (state) => {
     return (`
-=======
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <td>${roverData[0].rover.name}</td>
-                </tr>
-                <tr>
-                    <th>Launch date</th>
-                    <td>${roverData[0].rover.launch_date}</td>
-                </tr>
-                <tr>
-                    <th>Landing date</th>
-                    <td>${roverData[0].rover.landing_date}</td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td>${roverData[0].rover.status}</td>
-                </tr>
-                <tr>
-                    <th>Most recent photos taken on</th>
-                    <td>${roverData.slice(-1).pop().earth_date}</td>
-                </tr>
-            </table>
-        </div>
-        `;
-  return roverDetails;
-};
-
-//get up to 4 rover images(Higher Order function)
-const getRoverImage = (state) => {
-    const roverData = () => state.latest_photos;
-    console.log(roverData.length);
-        const roverDataSlice = roverData().slice(0, 4)
-        return roverDataSlice.map (e => {
-            console.log(e.img_src)
-            return(`
-            <div id="img-container">
-                <img src="${e.img_src}" id="${e.rover.name.toLowerCase()}-img"></img>
-            </div>
-            `)
-        }).join(" ")
-    };
-
-//display data
-const renderRoverData = (state) => {
-    return (
-    `
->>>>>>> 6750830f010584414d7d03b28999f572aeb558b6
     <main>
         ${Greeting(store.get("project").get("name"))}
         <nav>
             ${navMenu()}
         </nav> 
-<<<<<<< HEAD
-        <div id='content' style='display:none'>
-            <div id='roverDetails'>
-                ${roverFact(state)}
-                ${renderRoverInfo(state)}
-            </div>
-            <div id='roverPhotos'>
-                ${getRoverImage(state)}
-            </div>
-        </div>
-    </main>
-    `);
-};
-=======
         <div id="content" style="display:none">
         <div id="roverDetails">
             ${roverFact(state)}
@@ -201,7 +122,6 @@ const renderRoverData = (state) => {
     `
     );       
  };
->>>>>>> 6750830f010584414d7d03b28999f572aeb558b6
 
 //fact depending on the rover
 const roverFact = (state) => {
@@ -224,29 +144,6 @@ const roverFact = (state) => {
     }
 };
 
-<<<<<<< HEAD
-//button
-function roverButton(button) {
-    const selectedRover = button.id;
-    getRoverData(selectedRover, true);
-}
-
-const getRoverData = (roverName, show) => {
-    fetch(`http://localhost:3005/rover/${roverName.toLowerCase()}`)
-        .then(res => res.json())
-        .then((roverData) => {
-            const latest_photos = roverData.latest_photos;
-            updateStore(store, { latest_photos });
-            render(root, store);
-            if (show) {
-                document.getElementById("content").style.display = "grid";
-            }
-        });
-};
-
-
-
-=======
 //buttons
 function roverButton(button) {
     const selectedRover = button.id;
@@ -262,7 +159,7 @@ const getRoverData = (roverName, show) => {
         render(root, store)
         if (show) {
             document.getElementById("content").style.display = "grid";
-    })
-};
->>>>>>> 6750830f010584414d7d03b28999f572aeb558b6
+    }
+})
+}
 
