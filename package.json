@@ -24,5 +24,13 @@
     "@typescript-eslint/parser": "^4.21.0",
     "eslint": "^7.23.0"
   },
-  "repository": "https://github.com/JanaBobulis/Mars-Dashboard.git"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanaBobulis/Mars-Dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JanaBobulis/Mars-Dashboard/issues"
+  },
+  "homepage": "https://github.com/JanaBobulis/Mars-Dashboard#readme",
+  "keywords": []
 }

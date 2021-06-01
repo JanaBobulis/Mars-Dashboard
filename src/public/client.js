@@ -98,6 +98,7 @@ const renderRoverData = (state) => {
         ${Greeting(store.get("project").get("name"))}
         <nav>
             ${navMenu()}
+<<<<<<< HEAD
         </nav> 
         <div id='content' style='display:none'>
             <div id='roverDetails'>
@@ -111,6 +112,21 @@ const renderRoverData = (state) => {
     </main>
     `);
 };
+=======
+        </nav>
+        <div id="content" style="display:none">
+        <div id="roverDetails">
+            ${roverFact(state)}
+            ${renderRoverInfo(state)}
+        </div>
+        <div id="roverPhotos">
+            ${getRoverImage(state)}
+        </div>
+    </div>
+   </main>
+    `);       
+ };
+>>>>>>> 07a3ce512dbf0d5e5600632e7f83f20465a61892
 
 //fact depending on the rover
 const roverFact = (state) => {
@@ -151,7 +167,10 @@ const getRoverData = (roverName, show) => {
             }
         });
 };
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 07a3ce512dbf0d5e5600632e7f83f20465a61892
