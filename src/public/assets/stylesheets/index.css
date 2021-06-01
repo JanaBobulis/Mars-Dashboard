@@ -18,6 +18,11 @@ body {
   font-weight: normal;
 }
 
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 h1 {
   font-size: 40px;
 }
@@ -189,7 +194,7 @@ th {
     padding: 10px;
     line-height: 1.5rem;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-areas: ". . details details details info info info info info . .";
+    grid-template-areas: ". details details details details info info info info info info .";
     display: grid;
     align-items: center;
   }
@@ -223,7 +228,7 @@ th {
   #content #roverPhotos #img-container {
     margin: 5px;
     flex-grow: 1;
-    width: 350px;
+    width: 300px;
   }
 
   #img-container img {
