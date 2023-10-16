@@ -20,7 +20,7 @@ app.get('/rover/:name', async (req, res) => {
     console.log(req, res)
     let { name } = req.params
     try {
-        let roverData = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${name.toLowerCase()}/latest_photos?api_key=${process.env.API_KEY}`)
+        let roverData = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${name.toLowerCase()}/latest_photos?api_key=Cl35W9WR8IQcclfc4rcMbclDGPzTjN1AXJXWWZn1`)
         .then(res => res.json())
         res.send(roverData)
     } catch (err) {
