@@ -140,7 +140,7 @@ function roverButton(button) {
 
 const getRoverData = (roverName, show) => {
     console.log(roverName, show)
-    fetch(`https://mars-dashboard-1.vercel.app/rover/${roverName.toLowerCase()}`)
+    fetch(`http://localhost:3005/rover/${roverName.toLowerCase()}`)
         .then(res => res.json())
         .then((roverData) => {
             const latest_photos = roverData.latest_photos;
